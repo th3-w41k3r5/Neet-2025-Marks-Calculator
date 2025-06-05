@@ -65,12 +65,6 @@ This calculator supports all NEET 2025 test booklet codes. Simply select your bo
 - Try **Ctrl+Shift+I** instead of F12
 - Right-click on the page and select "Inspect Element"
 
-### Mobile Users
-
-For mobile devices, consider:
-- Using desktop mode in your mobile browser
-- Connecting to a computer for remote debugging
-- Using browsers like Kiwi Browser (Android) that support extensions
 
 ## Technical Details
 
