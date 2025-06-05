@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEET 2025 Marks Calculator</title>
+    <meta name="description" content="NEET UG 2025 Score Calculator: Calculate your NEET Score with automated script">
+    <meta name="keywords"
+        content="NEET 2025, Neet marks calculator, calculator, marks calculator, medical entrance exam, OMR">
+    <meta name="author" content="Novadrone16">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="NEET 2025 Marks Calculator">
+    <meta property="og:description" content="Calculate your NEET Score with automated script">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https:n2025scorecard.netlify.app">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="NEET 2025 Marks Calculator">
+    <meta name="twitter:description"
+        content="NEET UG 2025 Score Calculator: Calculate your NEET Score with automated script">
+    <link rel="canonical" href="https:n2025scorecard.netlify.app">
+    <meta name="theme-color" content="#3B82F6">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KF1BBK4DQN"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-KF1BBK4DQN');
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: #F8FAFC;
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%);
+            color: white;
+            padding: 40px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" fill-opacity="0.05"/><circle cx="75" cy="75" r="1" fill="white" fill-opacity="0.05"/><circle cx="50" cy="10" r="1" fill="white" fill-opacity="0.03"/><circle cx="10" cy="60" r="1" fill="white" fill-opacity="0.04"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            letter-spacing: -0.025em;
+            background: linear-gradient(45deg, #ffffff, #e0e7ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            font-weight: 400;
+            opacity: 0.9;
+            margin-bottom: 24px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            padding: 8px 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 32px;
+        }
+
+        .dashboard-content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .section-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 12px;
+            color: #3B82F6;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #111827;
+        }
+
+        .card {
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-radius: 16px;
+            padding: 32px;
+            transition: all 0.2s ease;
+        }
+
+        .card:hover {
+            border-color: #CBD5E1;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .selector-card {
+            background: linear-gradient(135deg, #F1F5F9 0%, #E2E8F0 100%);
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 16px 20px;
+            font-size: 1rem;
+            font-weight: 500;
+            border: 2px solid #E5E7EB;
+            border-radius: 12px;
+            background: white;
+            color: #111827;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 16px center;
+            background-repeat: no-repeat;
+            background-size: 16px;
+        }
+
+        .form-select:focus {
+            outline: none;
+            border-color: #3B82F6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .instructions-card {
+            background: linear-gradient(135deg, #DBEAFE 0%, #BFDBFE 100%);
+            border-color: #3B82F6;
+        }
+
+        .step-list {
+            list-style: none;
+            counter-reset: step-counter;
+        }
+
+        .step-item {
+            counter-increment: step-counter;
+            margin-bottom: 20px;
+            padding-left: 48px;
+            position: relative;
+            font-size: 1rem;
+            color: #1E40AF;
+            font-weight: 500;
+        }
+
+        .step-item::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 2px;
+            width: 32px;
+            height: 32px;
+            background: #3B82F6;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.875rem;
+        }
+
+        .step-link {
+            color: #1D4ED8;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .step-link:hover {
+            border-bottom-color: #1D4ED8;
+        }
+
+        .step-highlight {
+            background: rgba(59, 130, 246, 0.2);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 700;
+        }
+
+        .image-placeholder {
+            background: #F3F4F6;
+            border: 2px dashed #D1D5DB;
+            border-radius: 8px;
+            width: 100%;
+            margin: 12px 0;
+            text-align: center;
+            color: #6B7280;
+            font-style: italic;
+            font-size: 0.875rem;
+        }
+
+        .code-section {
+            display: none;
+            margin-top: 40px;
+        }
+
+        .code-section.show {
+            display: block;
+            animation: slideUp 0.4s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .code-card {
+            background: #1E293B;
+            border: 1px solid #334155;
+            color: white;
+        }
+
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 32px;
+            border-bottom: 1px solid #334155;
+        }
+
+        .code-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #F1F5F9;
+        }
+
+        .copy-button {
+            display: inline-flex;
+            align-items: center;
+            background: linear-gradient(135deg, #3B82F6, #1E40AF);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            gap: 8px;
+        }
+
+        .copy-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+        }
+
+        .copy-button:active {
+            transform: translateY(0);
+        }
+
+        .code-content {
+            background: #0F172A;
+            padding: 32px;
+            font-family: 'JetBrains Mono', 'Monaco', 'Consolas', monospace;
+            font-size: 14px;
+            line-height: 1.7;
+            color: #E2E8F0;
+            max-height: 400px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        .code-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .code-content::-webkit-scrollbar-track {
+            background: #1E293B;
+        }
+
+        .code-content::-webkit-scrollbar-thumb {
+            background: #475569;
+            border-radius: 4px;
+        }
+
+        .code-content::-webkit-scrollbar-thumb:hover {
+            background: #64748B;
+        }
+
+        .privacy-notice {
+            background: #EFF6FF;
+            border: 1px solid #BFDBFE;
+            border-left: 4px solid #3B82F6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 32px 0;
+        }
+
+        .privacy-title {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            color: #1E40AF;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .privacy-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+        }
+
+        .privacy-text {
+            color: #1E40AF;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .footer {
+            background: #F8FAFC;
+            border-top: 1px solid #E5E7EB;
+            padding: 32px 40px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            color: #6B7280;
+            font-size: 0.95rem;
+        }
+
+        .footer-icon {
+            width: 20px;
+            height: 20px;
+            color: #3B82F6;
+        }
+
+        .reddit-link {
+            color: #3B82F6;
+            text-decoration: none;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 6px;
+            transition: background-color 0.2s ease;
+        }
+
+        .reddit-link:hover {
+            background: #EFF6FF;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .hero-section {
+                padding: 40px 24px;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .dashboard-content {
+                padding: 24px;
+            }
+
+            .card {
+                padding: 24px;
+            }
+
+            .code-header {
+                flex-direction: column;
+                gap: 16px;
+                align-items: stretch;
+            }
+
+            .footer {
+                padding: 24px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">NEET (UG) 2025 Marks Calculator</h1>
+                <p class="hero-subtitle">Calculate your NEET Score with automated script</p>
+            </div>
+        </div>
+
+        <div class="dashboard-content">
+            <div class="section">
+                <div class="section-header">
+                    <svg class="section-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2">
+                        </path>
+                    </svg>
+                    <h2 class="section-title">Test Booklet Selection</h2>
+                </div>
+                <div class="card selector-card">
+                    <div class="form-group">
+                        <label for="testBookletSelect" class="form-label">Choose Your Test Booklet</label>
+                        <select id="testBookletSelect" class="form-select">
+                            <option value="">Select test booklet number</option>
+                            <option value="45">Test Booklet 45</option>
+                            <option value="46">Test Booklet 46</option>
+                            <option value="47">Test Booklet 47</option>
+                            <option value="48">Test Booklet 48</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="privacy-notice">
+                <div class="privacy-title">
+                    <svg class="privacy-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                        </path>
+                    </svg>
+                    Privacy & Security Notice
+                </div>
+                <p class="privacy-text">
+                    No data is being stored as all you do is paste a script on official NEET site only to see your
+                    performance analysis. Your data stays completely safe and private.
+                </p>
+            </div>
+
+            <div class="section">
+                <div class="section-header">
+                    <svg class="section-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                        </path>
+                    </svg>
+                    <h2 class="section-title">Instructions</h2>
+                </div>
+                <div class="card instructions-card">
+                    <ol class="step-list">
+                        <li class="step-item">
+                            Login to your <a
+                                href="https://examinationservices.nic.in/neet2025/root/Home.aspx?enc=Ei4cajBkK1gZSfgr53ImFcFR+natXIEjJ1rCf6DMgOr/hcv4rs34T5gNmvCx/R+a"
+                                target="_blank" class="step-link">NEET Portal</a>
+                        </li>
+                        <li class="step-item">
+                            Scroll down and click on <span class="step-highlight">"Click To View and Challenge
+                                OMR"</span>
+                            <img src="challengeOMRbutton.png" alt="challengeOMRbutton" class="image-placeholder">
+                        </li>
+                        <li class="step-item">
+                            Then click on <span class="step-highlight">"Click here to View and Challenge Recorded OMR"
+                                button</span>
+                            <img src="challengeRecordedOMRbutton.png" alt="challengeRecordedOMRbutton"
+                                class="image-placeholder">
+                        </li>
+                        <li class="step-item">
+                            Press <span class="step-highlight">"F12"</span> or <span
+                                class="step-highlight">"Ctrl+Shift+I"</span> on keyboard
+                        </li>
+                        <li class="step-item">
+                            Find the <span class="step-highlight">"Console"</span> Tab on top and go to it
+                        </li>
+                        <li class="step-item">
+                            Paste the script code on Console Tab and press <span class="step-highlight">"Enter"</span>
+                            (you will get the script code after selecting Test Booklet No.)
+                        </li>
+                        <li class="step-item">
+                            If you can't paste, type <span class="step-highlight">"allow pasting" & press "Enter"</span>
+                            then paste the script code again
+                        </li>
+                        <li class="step-item">
+                            Press <span class="step-highlight">"F12"</span> or <span
+                                class="step-highlight">"Ctrl+Shift+I"</span> on keyboard to close the developer tool
+                        </li>
+                        <li class="step-item">
+                            Now you can view your performance analysis
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="code-section" id="codeSection">
+                <div class="section-header">
+                    <svg class="section-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                    </svg>
+                    <h2 class="section-title">Script Code</h2>
+                </div>
+                <div class="card code-card">
+                    <div class="code-header">
+                        <h3 class="code-title">Test Booklet <span id="selectedBooklet"></span> - Script</h3>
+                        <button class="copy-button" id="copyButton">
+                            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                                </path>
+                            </svg>
+                            Copy to Clipboard
+                        </button>
+                    </div>
+                    <div class="code-content" id="codeContent"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="footer-content">
+                <svg class="footer-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                    </path>
+                </svg>
+                <span>Need help?</span>
+                <a href="https://reddit.com/u/Novadrone16" target="_blank" class="reddit-link">Contact u/Novadrone16</a>
+                <span>on Reddit</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="src/main.js" type="module"></script>
+</body>
+
+</html>
