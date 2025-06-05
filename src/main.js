@@ -48,9 +48,53 @@ copyButton.addEventListener('click', async () => {
   }
 });
 
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("carousel-slide");
+  if (n > slides.length) { slideIndex = 1 }
+  if (n < 1) { slideIndex = slides.length }
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+    slides[i].classList.remove("active");
+  }
+  slides[slideIndex - 1].style.display = "block";
+  slides[slideIndex - 1].classList.add("active");
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const cards = document.querySelectorAll('.card');
   cards.forEach((card, index) => {
     card.style.animationDelay = `${index * 0.1}s`;
   });
+
+  const slides = document.getElementsByClassName("carousel-slide");
+  if (slides.length > 0) {
+    slides[0].style.display = "block";
+    slides[0].classList.add("active");
+  }
+
+  let slideInterval = setInterval(() => {
+    plusSlides(1);
+  }, 3000);
+
+  const carouselContainer = document.querySelector('.carousel-container');
+
+  if (carouselContainer) {
+    carouselContainer.addEventListener('mouseenter', () => {
+      clearInterval(slideInterval);
+    });
+
+    carouselContainer.addEventListener('mouseleave', () => {
+      slideInterval = setInterval(() => {
+        plusSlides(1);
+      }, 3000);
+    });
+  }
 });
