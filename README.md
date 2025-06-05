@@ -24,7 +24,7 @@ A web-based tool to calculate and analyze your NEET 2025 performance using your 
 2. Find the **"Console"** tab at the top and click on it
 
 ### Step 4: Get Your Script
-1. Select your Test Booklet number from the dropdown on this calculator
+1. Select your Test Booklet Code from the dropdown on this calculator
 2. Copy the generated script code using the "Copy to Clipboard" button
 
 ### Step 5: Execute Script
@@ -71,7 +71,6 @@ This calculator supports all NEET 2025 test booklet codes. Simply select your bo
 - Built with vanilla HTML, CSS, and JavaScript
 - Uses fetch API to load script files dynamically
 - Responsive design with CSS Grid and Flexbox
-- Copy to clipboard functionality using Navigator Clipboard API
 
 
 
